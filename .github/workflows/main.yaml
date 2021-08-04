@@ -101,3 +101,15 @@ jobs:
         run: |
           echo "Deployment is going on"
           sleep 30
+  njsscan:
+    runs-on: ubuntu-latest
+    needs: functional-testing
+    name: njsscan check
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: nodejsscan scan
+      id: njsscan
+      uses: SaranyaThangavel1907/njsscan-action@master
+      with:
+        args: '.'
