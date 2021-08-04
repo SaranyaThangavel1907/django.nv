@@ -24,6 +24,7 @@ jobs:
           sleep 5
   security-testing:
     runs-on: ubuntu-latest
+    continue-on-error: true
     needs: functional-testing
     steps:
       - name: Checkout the Code
