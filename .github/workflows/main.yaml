@@ -15,8 +15,7 @@ jobs:
 
 
   functional-testing:
-    runs-on: ubuntu-latest
-    continue-on-error: true
+    runs-on: ubuntu-latest    
     needs: build
     steps: 
       - name: Functional Testing
@@ -50,8 +49,7 @@ jobs:
         continue-on-error: true
 
   deployment:
-    runs-on: ubuntu-latest
-    continue-on-error: true
+    runs-on: ubuntu-latest    
     needs: security-testing
     steps: 
       - name: Deployment Steps
