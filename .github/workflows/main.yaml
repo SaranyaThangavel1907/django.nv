@@ -49,16 +49,19 @@ jobs:
         
   frontend-static-scan:
     runs-on: ubuntu-latest
-    continue-on-error: true
     needs: functional-testing
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout code
+        uses: actions/checkout@v2
 
-      - run: npm install
+      - name: install npm
+        run: npm install
 
-      - run: npm install -g retire
+      - name: install retire
+        run: npm install -g retire
 
-      - run: retire --outputformat json --outputpath retirejs-report.json --severity high
+      - name: export vulnerability report
+        run: retire --outputformat json --outputpath retirejs-report.json --severity high
         continue-on-error: true
 
       - name: Upload the Output as an artifact
