@@ -46,23 +46,21 @@ jobs:
           name: NodeAudit
           path: node-audit-results.json
         if: always()
+        continue-on-error: true
         
   frontend-static-scan:
     runs-on: ubuntu-latest
     continue-on-error: true
     needs: functional-testing
     steps:
-      - name: Checkout the Code
       - uses: actions/checkout@v2
 
-      - name: install npm
-        run: npm install
+      - run: npm install
 
-      - name: install retire
-        run: npm install -g retire
+      - run: npm install -g retire
 
-      - name: run retire
-        run: retire
+      - run: retire
+        
       
   deployment:
     runs-on: ubuntu-latest    
